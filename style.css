@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 html {
     width: 100%;
     height: 100%;
@@ -6,25 +8,24 @@ html {
 body {
     width: 100%;
     height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: lightgray;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #f5f5f5;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
 }
 
 * {
     box-sizing: border-box;
 }
 
-h2 {
-    font-size: 20px;
-    margin: 0 0 15px 0;
-    padding: 0 0 15px 0;
-    border-bottom: 1px solid #eee;
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 30px 20px;
 }
 
 #registroForm {
@@ -32,9 +33,22 @@ h2 {
     flex-direction: column;
     background-color: white;
     padding: 20px;
-    border-radius: 8px;
-    margin: 40px 20px;
-    box-shadow: 1px 1px 10px -5px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    box-shadow: 2px 2px 15px -5px rgba(0, 0, 0, 0.15);
+    width: 100%;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 0 0 15px 0;
+    padding: 0 0 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+h5 {
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0 0 25px 0;
 }
 
 #formulario {
@@ -70,8 +84,8 @@ h2 {
 
 label {
     display: flex;
+    font-weight: 400;
     margin-bottom: 8px;
-    font-size: 14px;
     align-items: center;
 }
 
@@ -80,24 +94,30 @@ label.inline {
 }
 
 label.tyc input {
-    margin: 0 5px 0 0;
+    margin: 0 8px 0 0;
 }
 
 label.tyc {
-    font-size: 13px;
     padding: 12px;
     width: 100%;
-    border: 1px solid rgb(226, 204, 163);
-    background-color: rgb(248, 233, 204);
-    display: flex;
-    align-items: center;
+    border: 1px solid rgb(156, 196, 255);
+    background-color: rgb(196, 219, 253);
+    color: rgb(0, 45, 112);
+    font-weight: 300;
     border-radius: 4px;
 }
 
+label.tyc a {
+    color: dodgerblue;
+}
+
 input, select {
-    padding: 8px;
-    margin-bottom: 5px;
-    border: 1px solid #d8d8d8;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #dfdfdf;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 14px;
 }
 
 input[type="text"],
@@ -105,27 +125,30 @@ input[type="email"],
 input[type="number"],
 select {
     width: 100%;
+    border-radius: 3px;
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.15);
 }
 
 input[type="submit"] {
     font-weight: bold;
-    background-color: hotpink;
+    background-color: crimson;
     color: white;
     border: none;
     padding: 10px;
     border-radius: 4px;
     cursor: pointer;
-    box-shadow: 2px 2px 10px -5px rgba(0, 0, 0, 0.6);
+    box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.4);
     margin-top: 10px;
     width: 100%;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: background-color .5s ease;
+    transition: background-color .4s ease, box-shadow .4s ease;
 }
 
 input[type="submit"]:hover {
-    background-color: crimson;
-    transition: background-color .5s ease;
+    background-color: rgb(153, 7, 36);
+    box-shadow: none;
+    transition: background-color .4s ease, box-shadow .4s ease;
 }
 
 input[type="submit"]:active {
@@ -135,11 +158,48 @@ input[type="submit"]:active {
 .error {
     display: none;
     color: red;
-    font-size: 10px;
+    font-size: 12px;
+}
+
+.error-input {
+    border-color: rgba(220, 20, 60, 0.4);
+    box-shadow: 0px 0px 10px 0px rgba(220, 20, 60, 0.4) !important;
+    outline-color: transparent;
+    outline-width: 2px;
+    outline-style: dotted;
 }
 
 .required {
     color: rgb(7, 129, 170);
-    font-size: 11px;
-    margin-left: 5px;
+    font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+    #registroForm {
+        max-width: 480px;
+    }
+
+    #formulario {
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 20px;
+    }
+
+    .form-element {
+        flex-basis: calc(50% - 10px);
+    }
+
+    .form-element:nth-child(3),
+    .form-element:nth-child(4),
+    .form-element:nth-child(5) {
+        flex-basis: calc(33.3333% - 14px);
+    }
+
+    .form-element:nth-child(6),
+    .form-element:nth-child(7),
+    .form-element:nth-child(8),
+    .form-element:nth-child(9),
+    .form-element:nth-child(10) {
+        flex-basis: 100%;
+    }
 }

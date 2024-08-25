@@ -3,14 +3,33 @@ const submitFunction = (event) => {
         event.preventDefault()
     } else {
         event.preventDefault()
+
+        let nombre =  document.getElementById('nombre').value
+        let apellido =  document.getElementById('apellido').value
+        let documento =  document.getElementById('documento').value
+        let email =  document.getElementById('email').value
+        let edad =  document.getElementById('edad').value
+        let actividad =  document.getElementById('actividad').value
+        let nivelEstudio =  document.getElementById('nivelEstudio').value
+        let aceptoTerminos =  document.getElementById('aceptoTerminos').checked
+
+        const publicidad = []
+        document.querySelectorAll('[name="publicidad"]').forEach((element) => {
+            if(element.checked){
+                publicidad.push(element.value.charAt(0).toUpperCase() + element.value.slice(1))
+            }
+        })
+
         alert(
-            'Nombre: ' + document.getElementById('nombre').value + '\n' +
-            'Apellido: ' + document.getElementById('apellido').value + '\n' +
-            'Documento: ' + document.getElementById('documento').value + '\n' +
-            'Email: ' + document.getElementById('email').value + '\n' +
-            'Edad: ' + document.getElementById('edad').value + '\n' +
-            'Actividad: ' + document.getElementById('actividad').value + '\n' +
-            'Nivel de Estudio: ' + document.getElementById('nivelEstudio').value + '\n'
+            'Nombre: ' + nombre + '\n' +
+            'Apellido: ' + apellido + '\n' +
+            'Documento: ' + documento + '\n' +
+            'Email: ' + email + '\n' +
+            'Edad: ' + edad + '\n' +
+            'Actividad: ' + actividad + '\n' +
+            'Nivel de Estudio: ' + nivelEstudio + '\n' +
+            'Acepto TyC: ' + (aceptoTerminos ? 'Si' : 'No') + '\n' +
+            'Publicidad: ' + (publicidad.length ? publicidad.toString() : 'No') + '\n'
         )
     }
 }
@@ -24,7 +43,7 @@ function validarFormulario(){
     camposTexto.forEach(campo => {
         let errorCampo = document.getElementById('error' + campo.id.charAt(0).toUpperCase() + campo.id.slice(1))
         if(campo.value.length == ''){
-            mostrarError(errorCampo, 'Campo requerido!')
+            mostrarError(errorCampo, 'Este campo es Requerido!')
             validacionCorrecta = false
         } else if (campo.value.length > 0  && campo.value.length < 3) {
             mostrarError(errorCampo, 'Este campo debe tener al menos 3 caracteres!')
@@ -40,7 +59,7 @@ function validarFormulario(){
     if(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){ // Regex validar formato de email
         ocultarError(errorEmail);
     } else {
-        mostrarError(errorEmail, 'El email no es Valido!')
+        mostrarError(errorEmail, 'El email ingresado no es Valido!')
         validacionCorrecta = false
     }
     
@@ -48,7 +67,7 @@ function validarFormulario(){
     const errorEdad = document.getElementById('errorEdad')
 
     if(edad.value < 18) {
-        mostrarError(errorEdad, 'Debes ser Mayor de 18 años!')
+        mostrarError(errorEdad, 'Usted debe ser Mayor de 18 años!')
         validacionCorrecta = false
     } else {
         ocultarError(errorEdad)
@@ -78,7 +97,7 @@ function validarFormulario(){
     const errorAceptoTerminos = document.getElementById('errorAceptoTerminos')
 
     if(!aceptoTerminos.checked){
-        mostrarError(errorAceptoTerminos, 'Debes aceptar los Terminos y Condiciones')
+        mostrarError(errorAceptoTerminos, 'Debe Aceptar los Terminos y Condiciones!')
         validacionCorrecta = false
     } else {
         ocultarError(errorAceptoTerminos)
@@ -88,11 +107,13 @@ function validarFormulario(){
 }
 
 const mostrarError = (elemento, mensaje) => {
+    let input = elemento.previousElementSibling.classList.add('error-input')
     elemento.textContent = mensaje
     elemento.style.display = 'block'
 }
 
 const ocultarError = (elemento) => {
+    let input = elemento.previousElementSibling.classList.remove('error-input')
     elemento.textContent = ''
     elemento.style.display = 'none'
 }
