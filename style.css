@@ -1,17 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 html {
     width: 100%;
     height: 100%;
+    padding: 0;
+    margin: 0;
 }
 
 body {
+    font-family: "Open Sans", sans-serif;
     width: 100%;
     height: 100%;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    background-color: #f5f5f5;
     margin: 0;
     padding: 0;
 }
@@ -20,12 +20,21 @@ body {
     box-sizing: border-box;
 }
 
-#container {
+.container {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(241, 241, 241);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main {
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    padding: 30px 20px;
+    margin: 20px;
+    width: 100%;
+    max-width: 480px;
 }
 
 #registroForm {
@@ -84,9 +93,11 @@ h5 {
 
 label {
     display: flex;
+    font-size: 14px;
     font-weight: 400;
     margin-bottom: 8px;
     align-items: center;
+    font-family: "Roboto", sans-serif;
 }
 
 label.inline {
@@ -100,9 +111,8 @@ label.tyc input {
 label.tyc {
     padding: 12px;
     width: 100%;
-    border: 1px solid rgb(156, 196, 255);
-    background-color: rgb(196, 219, 253);
-    color: rgb(0, 45, 112);
+    border: 1px solid rgb(241, 232, 149);
+    background-color: rgb(255, 252, 223);
     font-weight: 300;
     border-radius: 4px;
 }
@@ -131,7 +141,7 @@ select {
 
 input[type="submit"] {
     font-weight: bold;
-    background-color: crimson;
+    background-color: royalblue;
     color: white;
     border: none;
     padding: 10px;
@@ -146,7 +156,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: rgb(153, 7, 36);
+    background-color: rgb(40, 73, 170);
     box-shadow: none;
     transition: background-color .4s ease, box-shadow .4s ease;
 }
@@ -163,14 +173,18 @@ input[type="submit"]:active {
 
 .error-input {
     border-color: rgba(220, 20, 60, 0.4);
-    box-shadow: 0px 0px 10px 0px rgba(220, 20, 60, 0.4) !important;
+    box-shadow: 0px 0px 10px 0px rgba(220, 20, 60, 0.2) !important;
     outline-color: transparent;
     outline-width: 2px;
     outline-style: dotted;
 }
 
+label .required {
+    margin-left: 2px;
+}
+
 .required {
-    color: rgb(7, 129, 170);
+    color: crimson;
     font-weight: 500;
 }
 
